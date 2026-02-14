@@ -7,7 +7,10 @@ var conn = mysql.createConnection({
   user: "u123456",
   password: "xxxxxxxx",
   database: "b123456",
-  port: 3306
+  port: 3306 ,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 conn.connect(function(err) {
