@@ -3,10 +3,10 @@ var util = require("util");
 
 var pool = mysql.createPool({
   connectionLimit: 10,
-  host: "bx123456-xxx.services.clever-cloud.com", // correct host
-  user: "u123456",
+  host: "btipauflfbkrtdk3sisp-mysql.services.clever-cloud.com", // correct host
+  user: "u8tszmrmmmgfti8k",
   password: "xxxxxxxx",
-  database: "b123456",
+  database: "u8tszmrmmmgfti8k",
   port: 3306,
   ssl: {
     rejectUnauthorized: false
