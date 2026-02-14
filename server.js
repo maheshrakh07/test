@@ -20,6 +20,8 @@ app.use(express.static("public"));
 app.use("/", userRouter);
 app.use("/admin",adminRouter)
 
+const PORT = process.env.PORT || 3000;
 
-app.listen(1000);
-
+app.listen(PORT, () => {
+  console.log("Server running on port " + PORT);
+});
