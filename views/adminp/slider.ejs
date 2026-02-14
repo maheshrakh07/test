@@ -1,0 +1,200 @@
+<%- include("navbar.ejs") %>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        padding: 20px;
+    }
+
+    .card {
+        background: #ffffff;
+        padding: 40px;
+        width: 100%;
+        max-width: 450px;
+        border-radius: 12px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    .card h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #555;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="file"] {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    .form-group input:focus {
+        border-color: #667eea;
+        outline: none;
+        box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px;
+        background: #667eea;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+    .btn:hover {
+        background: #5a67d8;
+        transform: translateY(-2px);
+    }
+
+    @media(max-width: 500px) {
+        .card {
+            padding: 25px;
+        }
+    }
+</style>
+
+<div class="form-container">
+    <div class="card">
+        <h2>Add Slider</h2>
+        <form action="/admin/save_slider/" method="post" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label>Slider Title</label>
+                <input type="text" name="slider_title" placeholder="Enter slider title" required>
+            </div>
+
+            <div class="form-group">
+                <label>Slider Sub Title</label>
+                <input type="text" name="slider_sub_title" placeholder="Enter slider subtitle" required>
+            </div>
+
+            <div class="form-group">
+                <label>Slider Image</label>
+                <input type="file" name="slider_image" required>
+            </div>
+
+            <button type="submit" class="btn">Save Slider</button>
+        </form>
+    </div>
+</div>
+<style>
+    .table-container {
+        width: 95%;
+        max-width: 1100px;
+        /* margin: 200px ; */
+        margin-left: 300px;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+    }
+
+    table thead {
+        background: #667eea;
+        color: #fff;
+    }
+
+    table th {
+        padding: 12px;
+        text-align: left;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+    }
+
+    table td {
+        padding: 12px;
+        border-bottom: 1px solid #eee;
+        color: #555;
+    }
+
+    table tr:hover {
+        background: #f4f6ff;
+        transition: 0.3s ease;
+    }
+
+    table img {
+        border-radius: 6px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    @media(max-width: 768px) {
+        table th, table td {
+            padding: 8px;
+            font-size: 12px;
+        }
+
+        table img {
+            width: 120px;
+        }
+    }
+</style>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Sr No</th>
+                <th>Slider Title</th>
+                <th>Slider Sub Title</th>
+                <th>Slider Image</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (var i=0; i<slide.length; i++) { %>
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= slide[i].slider_title %></td>
+                    <td><%= slide[i].slider_sub_title %></td>
+                    <td>
+                        <img src="/admin/assets/img/<%= slide[i].slider_image %>" width="150px" alt="">
+                    </td>
+                    <td>
+                        <button>update</button>
+                        <button>delete</button>
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+
+<%- include("footer.ejs") %>
