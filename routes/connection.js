@@ -3,10 +3,10 @@ var util = require("util");
 
 
 var conn = mysql.createConnection({
-  host: "your-host",
-  user: "your-user",
-  password: "your-password",
-  database: "your-database",
+  host: "bx123.clever-cloud.com",
+  user: "u123456",
+  password: "xxxxxxxx",
+  database: "b123456",
   port: 3306
 });
 
