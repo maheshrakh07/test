@@ -10,6 +10,14 @@ var conn = mysql.createConnection({
   port: 3306
 });
 
+conn.connect(function(err) {
+  if (err) {
+    console.log("Database connection failed:", err);
+  } else {
+    console.log("Database connected successfully");
+  }
+});
+
 var exe = util.promisify(conn.query).bind(conn)
 
 module.exports = exe ;
